@@ -20,8 +20,18 @@ __link__ = 'https://www.hackerrank.com/challenges/the-love-letter-mystery'
 # Output Format
 # A single line containing the number of minimum operations corresponding to each test case.
 #
-# Constraints
-# 1 ≤ T ≤ 10
-# 1 ≤ length of string ≤ 104
 # All characters are lower cased english letters.
 
+def isPalin(s):
+    return s==s[::-1]
+
+for k in range(input()):
+    s = raw_input()
+    count = 0
+    for i in range(len(s)-1,-1,-1):
+        if not isPalin(s):
+            count = count + abs(ord(s[i])-ord(s[len(s)-i-1]))
+            s= s[:i]+s[len(s)-i-1]+s[i+1:]
+        else:
+            break
+    print count
