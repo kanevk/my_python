@@ -5,9 +5,9 @@
             be computed replace them with 0. Each value is seperated by commas and structured
             into 9x9 matrix.
     Execution : python sudoku-tests.py
-                Enter CSV file name[data.csv]: data2.csv
+                Enter CSV file name[data1.csv]: data2.csv
 
-                On pressing enter key when asked to enter csv file name, it takes data.csv by default
+                On pressing enter key when asked to enter csv file name, it takes data1.csv by default
                 One entering a file name, the verification of sudoku.py is performed on the
                 newly entered csv file
 """
@@ -58,9 +58,9 @@ class MyTest(unittest.TestCase):
 
 
 if __name__=="__main__":
-    file = raw_input("Enter CSV file name[data.csv]:")
-    if file=='':
-        file='data.csv'
-    print 'Reading '+file
-    matrix = main(file)
+    inputfile = raw_input("Enter CSV file name[data.csv]:")
+    if inputfile=='':
+        inputfile='data1.csv'
+    print 'Reading '+inputfile
+    matrix = main(inputfile,inputfile[:-4]+"_output.csv")
     unittest.main()

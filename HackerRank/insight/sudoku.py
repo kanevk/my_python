@@ -4,13 +4,14 @@
             be computed replace them with 0. Each value is seperated by commas and structured
             into 9x9 matrix.
     Output: Displays the solved sudoku matrix. The red values corresponds to the computed values
-            and green values are the values suppiled in through the input.
+            and green values are the values suppiled in through the input. Output solved sudoku
+            will be written to a file <<input-csv-filename>>_output.csv.
 
     Execution : python sudoku.py <<csv-filename>>
 
                 python sudoku.py data.csv
 
-    Sample Data: Six sample datasets are available(data,data2...6) these sample sudoku matrices are
+    Sample Data: Six sample datasets are available(data1,data2...6) these sample sudoku matrices are
                 of varying difficulty levels (taken from the internet)
 """
 
@@ -27,14 +28,28 @@ def readCSV(file):
     """
 
     try:
-        with open(file, 'r') as csvfile:
-            csvreader = csv.reader(csvfile, delimiter=',')
+        with open(file, 'r') as readfile:
+            csvreader = csv.reader(readfile, delimiter=',')
             contents=[]
             for row in csvreader:
                 contents.append([int(i) for i in row])
             return contents
     except:
         print file+" : File does not exist!"
+
+def writeCSV(matrix,file):
+    """
+    Function writes the solved sudoku matrix to csv file
+    :param matrix: solved sudoku matrix
+    :param file: output csv-filename
+    """
+    try:
+        with open(file, 'wb') as outputfile:
+            csvwriter = csv.writer(outputfile)
+            for row in matrix:
+                csvwriter.writerow(row)
+    except:
+        print file+" : Error writing output to file!"
 
 def solveSudokuMatrix(matrix):
     """
@@ -194,16 +209,19 @@ def printMatrix(matrix):
 
 
 
-def main(file):
+def main(inputfile,outputfile):
     """
     This is the main driver function
     :param file: csv file-name
     :return : sudoku matrix
     """
-    matrix = readCSV(file)
+    matrix = readCSV(inputfile)
     if matrix:
         if solveSudokuMatrix(matrix):
+            print "Solved Sudoku"
             printMatrix(matrix)
+            print "Solved Sudoku written to file : " + outputfile
+            writeCSV(matrix,outputfile)
         else:
             print "No Solution"
         return matrix
@@ -212,9 +230,11 @@ def main(file):
 #  The program starts by accepting an argument - csv filename
 if __name__ == "__main__":
     if len(sys.argv)==2:
-        main(sys.argv[1])
+        file=sys.argv[1]
+        main(file,file[:-4]+"_output.csv")
     else:
         print 'Usage:  python sudoku.py <<input-csv-file>>\n\tpython sudoku.py data.csv'
 
         print """the <<input-csv-file>> should contain 9x9 matrix of numbers seperated by comma,
-"and zero in places where the value is to be solved for."""
+"and zero in places where the value is to be solved for. The output file will be generated as
+<<input-csv-file>>_output.csv consisting the solved sudoku matrix"""

@@ -15,13 +15,14 @@ Input&nbsp;:&nbsp;csv&nbsp;file&nbsp;containing&nbsp;the&nbsp;sudoku&nbsp;unsolv
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;be&nbsp;computed&nbsp;replace&nbsp;them&nbsp;with&nbsp;0.&nbsp;Each&nbsp;value&nbsp;is&nbsp;seperated&nbsp;by&nbsp;commas&nbsp;and&nbsp;structured<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;into&nbsp;9x9&nbsp;matrix.<br>
 Output:&nbsp;Displays&nbsp;the&nbsp;solved&nbsp;sudoku&nbsp;matrix.&nbsp;The&nbsp;red&nbsp;values&nbsp;corresponds&nbsp;to&nbsp;the&nbsp;computed&nbsp;values<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;green&nbsp;values&nbsp;are&nbsp;the&nbsp;values&nbsp;suppiled&nbsp;in&nbsp;through&nbsp;the&nbsp;input.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;green&nbsp;values&nbsp;are&nbsp;the&nbsp;values&nbsp;suppiled&nbsp;in&nbsp;through&nbsp;the&nbsp;input.&nbsp;Output&nbsp;solved&nbsp;sudoku<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;be&nbsp;written&nbsp;to&nbsp;a&nbsp;file&nbsp;&lt;&lt;input-csv-filename&gt;&gt;_output.csv.<br>
 &nbsp;<br>
 Execution&nbsp;:&nbsp;python&nbsp;sudoku.py&nbsp;&lt;&lt;csv-filename&gt;&gt;<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;python&nbsp;sudoku.py&nbsp;data.csv<br>
 &nbsp;<br>
-Sample&nbsp;Data:&nbsp;Six&nbsp;sample&nbsp;datasets&nbsp;are&nbsp;available(data,data2...6)&nbsp;these&nbsp;sample&nbsp;sudoku&nbsp;matrices&nbsp;are<br>
+Sample&nbsp;Data:&nbsp;Six&nbsp;sample&nbsp;datasets&nbsp;are&nbsp;available(data1,data2...6)&nbsp;these&nbsp;sample&nbsp;sudoku&nbsp;matrices&nbsp;are<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;varying&nbsp;difficulty&nbsp;levels&nbsp;(taken&nbsp;from&nbsp;the&nbsp;internet)</tt></p>
 <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -90,7 +91,7 @@ of&nbsp;the&nbsp;num&nbsp;in&nbsp;the&nbsp;unsolved&nbsp;sudoku&nbsp;matrix&nbsp
 :return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True,&nbsp;if&nbsp;the&nbsp;unsolved&nbsp;matrix&nbsp;can&nbsp;accommodate&nbsp;the&nbsp;new&nbsp;number&nbsp;without&nbsp;any&nbsp;coflicts&nbsp;in<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;row,column&nbsp;or&nbsp;box&nbsp;level<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;False,&nbsp;if&nbsp;the&nbsp;new&nbsp;number&nbsp;is&nbsp;already&nbsp;present&nbsp;in&nbsp;row,column&nbsp;or&nbsp;box&nbsp;levels</tt></dd></dl>
- <dl><dt><a name="-main"><strong>main</strong></a>(file)</dt><dd><tt>This&nbsp;is&nbsp;the&nbsp;main&nbsp;driver&nbsp;function<br>
+ <dl><dt><a name="-main"><strong>main</strong></a>(inputfile, outputfile)</dt><dd><tt>This&nbsp;is&nbsp;the&nbsp;main&nbsp;driver&nbsp;function<br>
 :param&nbsp;file:&nbsp;csv&nbsp;file-name<br>
 :return&nbsp;:&nbsp;sudoku&nbsp;matrix</tt></dd></dl>
  <dl><dt><a name="-printMatrix"><strong>printMatrix</strong></a>(matrix)</dt><dd><tt>This&nbsp;function&nbsp;prints&nbsp;out&nbsp;the&nbsp;inputted&nbsp;sudoku&nbsp;matrix,&nbsp;the&nbsp;solved&nbsp;values&nbsp;are&nbsp;print&nbsp;in&nbsp;red<br>
@@ -107,6 +108,9 @@ If&nbsp;a&nbsp;suitable&nbsp;value&nbsp;is&nbsp;matched&nbsp;the&nbsp;same&nbsp;
 &nbsp;<br>
 :param&nbsp;matrix:&nbsp;sudoku&nbsp;unsolved&nbsp;matrix<br>
 :return:&nbsp;returns&nbsp;True&nbsp;if&nbsp;sudoku&nbsp;is&nbsp;successfully&nbsp;solved&nbsp;and&nbsp;False&nbsp;if&nbsp;not</tt></dd></dl>
+ <dl><dt><a name="-writeCSV"><strong>writeCSV</strong></a>(matrix, file)</dt><dd><tt>Function&nbsp;writes&nbsp;the&nbsp;solved&nbsp;sudoku&nbsp;matrix&nbsp;to&nbsp;csv&nbsp;file<br>
+:param&nbsp;matrix:&nbsp;solved&nbsp;sudoku&nbsp;matrix<br>
+:param&nbsp;file:&nbsp;output&nbsp;csv-filename</tt></dd></dl>
 </td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#55aa55">
